@@ -3,6 +3,7 @@ import Author from './author.js';
 import Book from './book.js';
 import Category from './category.js';
 import Report from './report.js';
+import User from './user.js';
 
 const connectionString = 'mongodb://localhost:27017/Bookshop';
 

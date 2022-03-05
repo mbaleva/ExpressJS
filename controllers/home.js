@@ -5,6 +5,8 @@ const router = Router();
 
 const home = {
     async get (req, res) {
+        console.log(req.session.isLoggedIn);
+        res.locals.isLoggedIn = req.session.isLoggedIn;
         res.render('index');
     }
 };

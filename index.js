@@ -5,6 +5,7 @@ import session from 'express-session';
 import router from './controllers/home.js';
 import categories from './controllers/categories.js';
 import authors from './controllers/author.js';
+import auth from './controllers/users.js';
 import bodyParser from 'body-parser';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -26,6 +27,7 @@ async function start() {
         path.join(__dirname, 'views/home'),
         path.join(__dirname, 'views/categories'),
         path.join(__dirname, 'views/authors'),
+        path.join(__dirname, 'views/users'),
     ]);
     app.use(bodyParser.urlencoded({ extended: true })); 
     app.use(express.static('public'));
@@ -33,13 +35,14 @@ async function start() {
     app.use(session({
         secret: 'keyboard cat',
         resave: false,
-        saveUninitialized: true,
-        cookie: { secure: true }
+        saveUninitialized: false,
+        cookie: {  }
     }))
     
     app.use('/', router);
     app.use('/category', categories);
     app.use('/authors', authors);
+    app.use('/auth', auth);
     app.listen(port, () => {
         console.log(`Server started. Listening on ${port} port`);
     });
