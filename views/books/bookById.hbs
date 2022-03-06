@@ -1,0 +1,29 @@
+{{#if user.isAdmin}}
+    <a href="/books/edit/{{data.book.id}}" class="btn btn-secondary">Edit</a>
+    <a href="/books/delete/{{data.book.id}}" class="btn btn-danger">Delete</a>
+{{/if}}
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6" style="border-right: 3px solid darkgrey;">
+            <img src="{{data.book.imageUrl}}" class="img-fluid" alt="Car image">
+        </div>
+        <div class="col-lg-6">
+            <div><h3>Name: {{ data.book.name }}</h3></div>
+            <div><h3>Pages Count: {{ data.book.pages }}</h3></div>
+            <div><h3>Language: {{ data.book.language }}</h3></div>
+            <div><h3>Price: {{ data.book.price }}</h3></div>
+            <div><h3>Description: {{ data.book.description }}</h3></div>
+            <div><h3>Author: {{ data.author.name }} <a href="/authors/byid/{{data.author.id}}"
+            class="btn btn-secondary">
+                See more
+            </a></h3></div>
+            <div><h3>Category: {{ data.category.name }} <a href="/category/byid/{{data.category.id}}"
+            class="btn btn-info">
+                See more
+            </a></h3></div>
+        </div>
+    </div>
+</div>

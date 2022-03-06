@@ -1,0 +1,20 @@
+<style>
+    .card {
+        margin-right: 45px;
+        margin-bottom: 20px;
+    }
+</style>
+<br/>
+<br/>
+<div class="row">
+    {{#each books}}
+        <div class="card" style="width: 18rem;">
+            <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <h5 class="card-title">{{this.price}}</h5>
+                <a href="/books/byid/{{this.id}}" class="btn btn-secondary">See more</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

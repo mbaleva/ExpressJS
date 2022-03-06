@@ -12,11 +12,33 @@ const deleteById = async (id) => {
 const updateById = async (id, category) => {
     await Category.findByIdAndUpdate(id, category);
 }
+const getAll = async () => {
+    const arr = [];
+    await (await Category.find({})).forEach((x) => {
+        arr.push({
+            name: x.name,
+            id: x._id.toString(),
+        });
+    });
+    return arr;
+}
+const getForBook = async (id) => {
+    let obj = {
+        name: '',
+        id: '',
+    };
+    let category = await Category.findById(id);
+    obj.name = category.name;
+    obj.id = category._id.toString();
+    return obj;
+}
 
 const categories = {
     create,
     byid,
     deleteById,
     updateById,
+    getAll,
+    getForBook,
 };
 export default categories;

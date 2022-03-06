@@ -9,9 +9,11 @@ const bookSchema = new Schema({
     pages: {type: Number, required: true},
     name: {type: String, required: true},
     language: {type: String},
-    category: {type: Object},
-    author: {type: Object},
-    price: {type: Number, required: true}
+    category: {type: String},
+    author: {type: String},
+    price: {type: Number, required: true},
+    description: {type: String, required: true},
+    imageUrl: {type: String, required: true}
 });
 
 const Book = model('Book', bookSchema);

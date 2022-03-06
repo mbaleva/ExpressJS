@@ -24,8 +24,10 @@
           {{#if user.isAdmin}}
           <li class="nav-item active"><a href="/category/create" class="nav-link">Add new category</a></li>
           <li class="nav-item active"><a href="/authors/create" class="nav-link">Add new author</a></li>
+          <li class="nav-item active"><a href="/books/create" class="nav-link">Add new book</a></li>
           {{/if}}
           {{#if isLoggedIn}}
+          <li class="nav-item active"><a href="/books/list" class="nav-link">All books</a></li>
           <li class="nav-item active"><a href="/auth/logout" class="nav-link">Logout</a></li>
           {{else}}
           <li class="nav-item active"><a href="/auth/login" class="nav-link">Login</a></li>

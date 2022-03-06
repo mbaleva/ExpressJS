@@ -9,6 +9,7 @@ import auth from './controllers/users.js';
 import bodyParser from 'body-parser';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import books from './controllers/books.js';
 import obj from './middlewares/auth.js';
 
 const app = express();
@@ -29,6 +30,7 @@ async function start() {
         path.join(__dirname, 'views/categories'),
         path.join(__dirname, 'views/authors'),
         path.join(__dirname, 'views/users'),
+        path.join(__dirname, 'views/books'),
     ]);
     app.use(bodyParser.urlencoded({ extended: true })); 
     app.use(express.static('public'));
@@ -44,6 +46,7 @@ async function start() {
     app.use('/category', categories);
     app.use('/authors', authors);
     app.use('/auth', auth);
+    app.use('/books', books);
     app.listen(port, () => {
         console.log(`Server started. Listening on ${port} port`);
     });
