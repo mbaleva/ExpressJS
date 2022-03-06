@@ -9,6 +9,7 @@ import auth from './controllers/users.js';
 import bodyParser from 'body-parser';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import obj from './middlewares/auth.js';
 
 const app = express();
 const port = 4000;
@@ -37,8 +38,8 @@ async function start() {
         resave: false,
         saveUninitialized: false,
         cookie: {  }
-    }))
-    
+    }));
+    app.use(obj.transferUserToResponse);
     app.use('/', router);
     app.use('/category', categories);
     app.use('/authors', authors);

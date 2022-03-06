@@ -11,13 +11,12 @@ const users = {
         },
         post: async (req, res) => {
             let user = await usersService.findByEmail(req.body.email);
-            console.log('>>> User: ', user);
             const hashResult = await bcrypt.compare(req.body.password, user.password); 
             if(hashResult) {
                 console.log('>>> Cookie: ', req.session.cookie);
-                req.session.user = { id: user._id, username: user.username };
+                req.session.user = { id: user._id, username: user.username, isAdmin: false };
                 req.session.isLoggedIn = true;
-                console.log('>>> New Cookie: ', req.session.cookie);
+                req.session.user.isAdmin = await usersService.isAdminByEmail(user.email);
                 res.redirect('/');
             }
         }

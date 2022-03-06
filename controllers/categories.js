@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import categories from '../services/categoriesService.js';
+import obj from '../middlewares/auth.js';
 
 const router = Router();
 
@@ -10,7 +11,7 @@ const category = {
         },
         post: async (req, res) => {
             const result = await categories.create(req.body.name, req.body.description);
-            res.redirect(`/byid/${result._id.toString()}`);
+            res.redirect(`/category/byid/${result._id.toString()}`);
         }
     },
     byid: {
@@ -21,9 +22,8 @@ const category = {
     }
 };
 
-
-router.get('/create', category.create.get);
-router.post('/create', category.create.post);
+router.get('/create', obj.authorizeAdmin, category.create.get);
+router.post('/create', obj.authorizeAdmin, category.create.post);
 router.get('/byid/:id', category.byid.get);
 
 export default router;

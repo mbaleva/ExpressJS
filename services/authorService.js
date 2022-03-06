@@ -6,8 +6,16 @@ const create = async (name, biography, imageUrl, address) => {
 const getById = async (id) => {
     return Author.findById(id);
 }
+const deleteById = async (id) => {
+    await Author.findByIdAndDelete(id);
+}
+const updateAuthor = async (id, author) => {
+    await Author.findByIdAndUpdate(id, author);
+}
 const actions = {
     create,
-    getById
+    getById,
+    deleteById,
+    updateAuthor,
 };
 export default actions;

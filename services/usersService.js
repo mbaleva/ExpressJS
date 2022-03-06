@@ -11,9 +11,13 @@ const register = async (name, username, password, email) => {
 const findByEmail = async (email) => {
     return User.findOne({ email: email });
 }
-
+const isAdminByEmail = async (email) => {
+    let user = await User.findOne({ email: email });
+    return user.roles.includes('Administrator');
+};
 const exports = {
     register,
     findByEmail,
+    isAdminByEmail,
 };
 export default exports;

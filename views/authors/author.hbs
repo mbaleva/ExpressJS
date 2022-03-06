@@ -5,6 +5,10 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
+        {{#if user.isAdmin}}
+        <a href="/authors/delete/{{id}}" class="btn btn-danger">Delete</a>
+        <a href="/authors/edit/{{id}}" class="btn btn-secondary">Edit</a>
+        {{/if}}
         <h1>{{name}}</h1>
         <img src="{{imageUrl}}" alt="{{name}}">
         <br>
