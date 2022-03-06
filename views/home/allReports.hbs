@@ -1,0 +1,7 @@
+<ul class="list-group">
+    {{#each reports}}
+    <li class="list-group-item">{{this}} 
+        <a href="/contacts/byid/{{this._id}}" class="btn btn-secondary">Details</a>
+    </li>
+    {{/each}}
+</ul>
